@@ -130,4 +130,10 @@ public partial class Log : System.Web.UI.Page
             }
         }
     }
+    protected void ResetAllButton_Click(object sender, EventArgs e)
+    {
+        SqlDataSource1.Update();
+        SqlDataSource2.Update();
+        SqlDataSource3.Delete();
+    }
 }

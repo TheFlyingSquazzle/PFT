@@ -87,7 +87,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div class="5grid">
-        <div class="6u">
+        <div class="3u-first">
             <!-- Feature #1 -->
             <section>
                 <h1 style="font-size: 28pt; margin-bottom: 2%;">Log Food</h1>
@@ -115,9 +115,37 @@
                 <asp:Button ID="FoodSubmitButton" runat="server" Text="Submit" onclick="FoodSubmitButton_Click"/>
 
             </section>
+            <div class="3u">
+            <!-- Feature #1 -->
+            <section>
+                <h1 style="font-size: 28pt; margin-bottom: 2%;">Reset All</h1>
+                <asp:Button ID="ResetAllButton" runat="server" Text="Reset" onclick="ResetAllButton_Click"/>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="Select * from [Nutrition]" UpdateCommand="Update [Nutrition] set CalorieGoal=@calGoal, ProteinGoal=@proGoal, CarbGoal=@carbGoal, FatGoal=@fatGoal, CalorieCurr=@calCurr, ProteinCurr=@proCurr, CarbCurr=@carbCurr, FatCurr=@fatCurr, WaterGoal=@waterGoal, WaterCurr=@waterCurr">
+                    <UpdateParameters>
+                        <asp:Parameter DefaultValue="0" Name="calGoal" />
+                        <asp:Parameter DefaultValue="0" Name="proGoal" />
+                        <asp:Parameter DefaultValue="0" Name="carbGoal" />
+                        <asp:Parameter DefaultValue="0" Name="fatGoal" />
+                        <asp:Parameter DefaultValue="0" Name="calCurr" />
+                        <asp:Parameter DefaultValue="0" Name="proCurr" />
+                        <asp:Parameter DefaultValue="0" Name="carbCurr" />
+                        <asp:Parameter DefaultValue="0" Name="fatCurr" />
+                        <asp:Parameter DefaultValue="0" Name="waterGoal" />
+                        <asp:Parameter DefaultValue="0" Name="waterCurr" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Fitness]" UpdateCommand="Update [Fitness] set ExerciseGoal=@exGoal,ExerciseCurr=@exCurr">
+    <UpdateParameters>
+        <asp:Parameter DefaultValue="0" Name="exGoal" />
+        <asp:Parameter DefaultValue="0" Name="exCurr" />
+    </UpdateParameters>
+                </asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM Food" SelectCommand="SELECT * FROM [Food]"></asp:SqlDataSource>
+            </section>
 
         </div>
     </div>
+    
 
 </asp:Content>
 
